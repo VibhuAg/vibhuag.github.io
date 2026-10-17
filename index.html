@@ -17,13 +17,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600&text=Vibhu%20Agrawal&display=swap" rel="stylesheet">
   <link href="dist/output.css" rel="stylesheet">
 </head>
-<body class="bg-linear-to-br/srgb md:bg-linear-to-r/srgb from-blue-800 to-sky-400 md:to-sky-300 text-white font-sans antialiased grid place-items-center px-4 py-12 sm:px-6">
+<body class="bg-linear-to-br/srgb md:bg-linear-to-r/srgb from-blue-800 to-sky-400 md:to-sky-300 text-white font-sans antialiased flex flex-col px-4 sm:px-6">
   <div class="caustics" aria-hidden="true">
     <div class="caustic caustic-b"></div>
     <div class="caustic caustic-c"></div>
   </div>
 
-  <main class="intro w-full max-w-4xl">
+  <header class="site-nav">
+    <nav aria-label="Site">
+      <a href="./" aria-current="page">Home</a>
+      <a href="projects/">Projects</a>
+    </nav>
+  </header>
+
+  <main class="intro m-auto w-full max-w-4xl py-12">
     <div class="grid items-center gap-8 sm:gap-10 md:grid-cols-[auto_auto] md:justify-center md:gap-x-12 lg:gap-x-24">
       <div class="order-2 md:order-1">
         <h1 class="name">Vibhu Agrawal</h1>

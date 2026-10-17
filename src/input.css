@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @source "../index.html";
+@source "../projects/index.html";
 
 /* v3 values of the colors the design was tuned with; v4's oklch defaults render slightly differently */
 @theme {
@@ -119,6 +120,103 @@
     border-radius: 1.5rem;
   }
 
+  /* Menu bar shared by every page; aria-current marks the page you're on */
+  .site-nav nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .site-nav a {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 6px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    color: #fff;
+    text-decoration-color: #fff;
+  }
+
+  .site-nav a[aria-current="page"] {
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+  }
+
+  .site-nav a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Liquid glass project card */
+  .glass-card {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    background:
+      linear-gradient(140deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04) 55%),
+      rgba(15, 38, 110, 0.18);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -24px 48px -24px rgba(255, 255, 255, 0.18),
+      0 30px 60px -30px rgba(8, 24, 80, 0.55);
+    transition: transform 0.25s, background-color 0.25s;
+  }
+
+  /* Thick-glass rim: brighter where light hits the top-left edge */
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.05) 65%, rgba(255, 255, 255, 0.35));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+
+  /* Full, uncropped preview image edge to edge across the top; the card's rounded corners clip its top corners */
+  .card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .card-title {
+    font-family: "Unbounded", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.375rem;
+    letter-spacing: -0.03em;
+  }
+
   .pill {
     display: inline-flex;
     align-items: center;
@@ -175,7 +273,8 @@
     animation: none;
   }
 
-  .pill:hover {
+  .pill:hover,
+  .glass-card:hover {
     transform: none;
   }
 }
