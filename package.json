@@ -8,11 +8,15 @@
     "watch": "tailwindcss -i src/input.css -o dist/output.css --watch"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.19"
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VibhuAg/vibhuag.github.io.git"
   },
-  "homepage": "https://vibhuagrawal.dev"
+  "homepage": "https://vibhuagrawal.dev",
+  "overrides": {
+    "@parcel/watcher": "2.5.6"
+  }
 }

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Single-page personal website, live at https://vibhuagrawal.dev (custom domain set by `CNAME`; GitHub Pages serves the `main` branch, and vibhuag.github.io redirects there). There is no framework or bundler: the whole site is `index.html`, styled with Tailwind CSS v3 utilities plus custom component classes in `src/input.css`. There are no tests or linters.
+Single-page personal website, live at https://vibhuagrawal.dev (custom domain set by `CNAME`; GitHub Pages serves the `main` branch, and vibhuag.github.io redirects there). There is no framework or bundler: the whole site is `index.html`, styled with Tailwind CSS v4 utilities plus custom component classes in `src/input.css`. There are no tests or linters.
 
 ## Build
 
@@ -15,7 +15,12 @@ npm run watch   # rebuild on change while editing
 python3 -m http.server 8000   # preview at http://localhost:8000
 ```
 
-GitHub Pages runs no build step, so commit `dist/output.css` along with any change to `index.html` or `src/input.css`. Tailwind only emits classes it finds in `index.html` (the `content` glob in `tailwind.config.js`), so if you add a class without rebuilding, it won't render on the live site.
+GitHub Pages runs no build step, so commit `dist/output.css` along with any change to `index.html` or `src/input.css`. Tailwind only emits classes it finds in `index.html`, so if you add a class without rebuilding, it won't render on the live site.
+
+Tailwind v4 has no `tailwind.config.js`; all configuration lives in `src/input.css`:
+- `@import "tailwindcss" source(none)` plus `@source "../index.html"` limits class scanning to the page itself (otherwise it would also pick up class-like text in files like this one).
+- `@theme` pins the v3 hex values of the palette colors the page uses. v4's defaults are oklch and render slightly differently. Gradients use the `/srgb` modifier (`bg-linear-to-r/srgb`) for the same reason. Keep both if you touch the gradient, or the colors will shift.
+- `package.json` has an npm `overrides` entry that forces `@parcel/watcher` to 2.5.6. The Tailwind CLI pins 2.5.1, which pulls in `micromatch` → `braces`, and every version of `braces` has an open security advisory. 2.5.6 uses `picomatch` instead. You can drop the override once a Tailwind CLI release depends on a watcher ≥ 2.5.6 itself.
 
 ## Design
 
