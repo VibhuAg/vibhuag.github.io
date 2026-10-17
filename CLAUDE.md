@@ -30,7 +30,7 @@ The page uses a blue-800 gradient with white text. Desktop (`md` and up) runs le
 - `.glass-card` is the liquid-glass project card on the projects page: `backdrop-filter` blur, plus a bright rim drawn with a mask in `::before`. To add a project, copy the Tal `<a class="glass-card">` block (preview image, then `.card-body`); the grid fills from the top-left, as many cards per row as fit at 14rem minimum (four on desktop, one on phones).
 - Pages use relative paths (`dist/output.css` from the root, `../dist/output.css` from `projects/`) so they work both on the live domain and on a local server.
 - `.caustics` holds blurred radial-gradient shapes that drift slowly behind the content. They animate `transform` only, to keep them cheap.
-- Headings use the Unbounded font from Google Fonts, requested with a `text=` parameter so only the glyphs used on that page download (`Vibhu%20Agrawal` on home, `Tal` on projects). If you change or add Unbounded text, such as a new project card title, add its letters to that page's `text=` parameter, or they'll render in the fallback font.
+- The home-page name and project card titles are set in bold Helvetica (as on NYC subway signage) via the stack `"Helvetica Neue", Helvetica, Arial, sans-serif`: real Helvetica on Apple devices, Arial elsewhere. The site loads no web fonts.
 - All motion is disabled under `prefers-reduced-motion`. Keep the page lightweight: it ships no JavaScript, and should not pull in frameworks or icon libraries.
 
 ## Assets

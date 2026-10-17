@@ -85,13 +85,14 @@
     }
   }
 
+  /* Helvetica, as on NYC subway signage; installed on Apple devices, Arial elsewhere */
   .name {
-    font-family: "Unbounded", ui-sans-serif, system-ui, sans-serif;
-    font-weight: 600;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
     font-size: clamp(1.5rem, 7.5vw, 2.875rem);
     line-height: 1.1;
     white-space: nowrap;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
     text-shadow: 0 2px 24px rgba(8, 24, 80, 0.25);
   }
 
@@ -211,10 +212,10 @@
   }
 
   .card-title {
-    font-family: "Unbounded", ui-sans-serif, system-ui, sans-serif;
-    font-weight: 600;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
     font-size: 1.375rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
   }
 
   .pill {
